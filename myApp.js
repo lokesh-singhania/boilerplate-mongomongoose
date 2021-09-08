@@ -11,10 +11,10 @@ const personSchema=new Schema({
 });
 
 const Person=mongoose.model('Person',personSchema);
-const docInstance=new Person({name:"Abraham",age:34,favouriteFoods:["Wafers"]})
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const docInstance=new Person({name:"Abraham",age:34,favouriteFoods:["Wafers"]})
+  done(null ,docInstance.save() );
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
