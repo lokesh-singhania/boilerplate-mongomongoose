@@ -5,21 +5,15 @@ mongoose.set('useUnifiedTopology',true)
 
 mongoose.connect(process.env.MONGO_URI)
 const Schema=mongoose.Schema
-
 const personSchema=new Schema({
-  name: {type:String,required:true},
+  name: { type: String, required: true },
   age: Number,
   favouriteFoods:[String]
 });
-
-const Person=mongoose.model('Person',personSchema);
-
+const Person = mongoose.model("Person", personSchema);
+// const doc=new Person({name:"Abraham",age:34,favouriteFoods:["Wafers"]});
 const createAndSavePerson = (done) => {
-  const docInstance=new Person({name:"Abraham",age:34,favouriteFoods:["Wafers"]})
-  docInstance.save((err,data)=>{
-    if(err) console.error(err);
-    else done(null,data)
-  });
+  done(null/*,data*/);
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
