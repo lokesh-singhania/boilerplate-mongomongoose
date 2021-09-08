@@ -14,7 +14,10 @@ const Person=mongoose.model('Person',personSchema);
 
 const createAndSavePerson = (done) => {
   const docInstance=new Person({name:"Abraham",age:34,favouriteFoods:["Wafers"]})
-  docInstance.save(done);
+  docInstance.save((err,data)=>{
+    if(err) console.error(err);
+    else done(null,data)
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
